@@ -15,7 +15,7 @@ jobs:
           distribution: 'temurin'
       - name: Build with Maven
         working-directory: ./back
-        run: ./mvnw --batch-mode --update-snapshots spring-boot:build-image -Dimage.tag=${GITHUB_REF##*/} -Dimage.dockeruser=${{ secrets.DOCKERHUB_USERNAME }}
+        run: ./mvnw --batch-mode --update-snapshots spring-boot:build-image -Dimage.tag=${GITHUB_REF##*/} -Dimage.dockeruser=${secrets.DOCKERHUB_USERNAME}
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
