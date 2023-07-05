@@ -16,6 +16,7 @@
 	<description>Demo project super useful</description>
 	<properties>
 		<java.version>17</java.version>
+		<image.dockeruser>lgrignon</image.dockeruser>
 		<image.name>wns-deploy-angular-spring-back</image.name>
 		<image.tag>latest</image.tag>
 	</properties>
@@ -61,7 +62,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<imageName>lgrignon/${image.name}:${image.tag}</imageName>
+					<imageName>${image.dockeruser}/${image.name}:${image.tag}</imageName>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 
 				</configuration>
