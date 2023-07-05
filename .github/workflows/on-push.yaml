@@ -30,5 +30,4 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push
-        run: |
-          docker push "${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring:${GITHUB_REF##*/}"
+        run: docker push "${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring:${GITHUB_REF##*/}"
