@@ -13,6 +13,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+
+      - name: debug secret
+        run: echo "-Dimage.dockeruser=${{ secrets.DOCKERHUB_USERNAME }}"
       - name: Build with Maven
         working-directory: ./back
         run: ./mvnw --batch-mode --update-snapshots spring-boot:build-image -Dimage.tag=${GITHUB_REF##*/} "-Dimage.dockeruser=${{ secrets.DOCKERHUB_USERNAME }}"
@@ -23,4 +26,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Push
         run: |
-          docker push ${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring:${GITHUB_REF##*/}
+          docker push "${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring:${GITHUB_REF##*/}"
