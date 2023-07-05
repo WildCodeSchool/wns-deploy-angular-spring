@@ -1,0 +1,12 @@
+<p>
+    Bienvenue sur un site parfaitement géré en DevOps
+</p>
+
+<p>
+    Version <b [class]="AppVersionClass">{{AppVersion}}</b>
+</p>
+
+<p>
+    Etat de la connexion au backend : 
+    <b [class]="connectionCssClass | async">{{ connectionStatus | async }}</b>
+</p>
