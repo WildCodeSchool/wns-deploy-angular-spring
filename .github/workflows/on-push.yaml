@@ -30,5 +30,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      - name: Dump local images
+        run: docker images
       - name: Push
         run: docker push lgrignon/wns-deploy-angular-spring:${GITHUB_REF##*/}
