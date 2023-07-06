@@ -18,5 +18,6 @@ FROM nginx:1.21.3 as RUN
 COPY nginx.conf /etc
 
 # copy compiled files from previous step
+WORKDIR /usr/share/nginx/html
 COPY --from=compile /app/build/dist/front/* ./
 
