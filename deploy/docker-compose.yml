@@ -1,0 +1,41 @@
+version: "3.5"
+
+services:
+  db:
+    container_name: app_${APP_ENV}_db
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=appdb
+      - POSTGRES_PASSWORD=appdb
+      - POSTGRES_DB=appdb
+    volumes:
+      - db:/var/lib/postgresql/data
+    networks:
+      - appinternals
+
+  back:
+    container_name: app_${APP_ENV}_back
+    image: ${DOCKER_USER}/wns-deploy-angular-spring-back:${DOCKER_IMAGE_TAG}
+    depends_on:
+      - db
+    networks:
+      - appinternals
+  
+  nginx:
+    container_name: app_${APP_ENV}_front
+    image: ${DOCKER_USER}/wns-deploy-angular-spring-front:${DOCKER_IMAGE_TAG}
+    depends_on:
+      - back
+    restart: always
+    networks:
+      - appinternals
+    ports:
+      - ${GATEWAY_PORT:-8000}:80
+      
+volumes:
+  db:
+    driver: local
+networks:
+  appinternals:
+    name: appinternals_${GATEWAY_PORT:-8000}

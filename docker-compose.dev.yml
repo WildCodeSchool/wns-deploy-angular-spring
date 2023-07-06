@@ -1,6 +1,8 @@
 version: "3.5"
 
 services:
+
+  # base de données de l'application
   db:
     image: postgres:14.1-alpine
     restart: always
@@ -12,22 +14,25 @@ services:
       - db:/var/lib/postgresql/data
     networks:
       - appinternals
+ 
+  # backend de l'application
   back:
     image: lgrignon/wns-deploy-angular-spring-back:latest
-    #command: sh -c "npm run build && npm run prod"
     depends_on:
       - db
-    
     networks:
       - appinternals
+
+  # frontend de l'application
   front:
     build: ./front
-    #command: sh -c "npm run build"
     volumes:
       - web-client-build:/app/build
     environment:
       - NODE_ENV=production  
     tty: true
+  
+  # serveur web de façade qui va dispatcher les requêtes entre back et front (voir nginx.conf)
   nginx:
     image: nginx:1.21.3
     depends_on:

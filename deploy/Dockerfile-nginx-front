@@ -1,0 +1,22 @@
+# This needs to be run from repository's root
+
+
+FROM node:18.16.1-alpine as compile
+
+# create build dirs
+RUN mkdir -p /app/build
+WORKDIR /app/build
+
+# copy sources and compile front
+COPY front .
+RUN npm install
+RUN npx ng build --configuration=production 
+
+FROM nginx:1.21.3 as RUN
+
+# copy our nginx configuration to container
+COPY nginx.conf /etc
+
+# copy compiled files from previous step
+COPY --from=compile /app/build/dist/front/* ./
+
