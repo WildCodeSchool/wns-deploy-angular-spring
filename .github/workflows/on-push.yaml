@@ -24,7 +24,7 @@ jobs:
         run: echo "-Dimage.dockeruser=${{ secrets.DOCKERHUB_USERNAME }}"
       - name: Build with Maven
         working-directory: ./back
-        run: ./mvnw --batch-mode --update-snapshots spring-boot:build-image -Dimage.tag=${GITHUB_REF##*/} "-Dimage.dockeruser=lgrignon"
+        run: ./mvnw --batch-mode --update-snapshots spring-boot:build-image -Dimage.tag=main "-Dimage.dockeruser=lgrignon"
       - name: Login to DockerHub
         uses: docker/login-action@v1
         with:
@@ -33,4 +33,4 @@ jobs:
       - name: Dump local images
         run: docker images
       - name: Push
-        run: docker push lgrignon/wns-deploy-angular-spring:${GITHUB_REF##*/}
+        run: docker push lgrignon/wns-deploy-angular-spring:main
