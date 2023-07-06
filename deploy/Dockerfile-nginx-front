@@ -15,7 +15,7 @@ RUN npx ng build --configuration=production
 FROM nginx:1.21.3 as RUN
 
 # copy our nginx configuration to container
-COPY nginx.conf /etc
+COPY nginx.conf /etc/nginx
 
 # copy compiled files from previous step
 WORKDIR /usr/share/nginx/html

@@ -20,7 +20,9 @@ services:
     depends_on:
       - db
     networks:
-      - appinternals
+      appinternals:
+        aliases:
+          - back
   
   nginx:
     container_name: app_${APP_ENV}_front
@@ -32,7 +34,7 @@ services:
       - appinternals
     ports:
       - ${GATEWAY_PORT:-8000}:80
-      
+
 volumes:
   db:
     driver: local
