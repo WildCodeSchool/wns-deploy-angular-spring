@@ -21,7 +21,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build FRONT image
-        run: docker build -f deploy/Dockerfile-nginx-front -t ${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring-front:${GITHUB_REF##*/} .
+        run: docker build -f ./deploy/Dockerfile-nginx-front -t ${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring-front:${GITHUB_REF##*/} .
 
       - name: Build BACK image with Maven
         working-directory: ./back
