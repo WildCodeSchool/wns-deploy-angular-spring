@@ -38,7 +38,7 @@ jobs:
 
       - name: Build FRONT image PREPROD
         if: github.ref == 'refs/heads/dev'
-        run: NG_ENV=preproduction oy/Dockerfile-nginx-front -t ${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring-front:${GITHUB_REF##*/} .
+        run: NG_ENV=preproduction docker build -f ./deploy/Dockerfile-nginx-front -t ${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring-front:${GITHUB_REF##*/} .
 
       # build backend image with Spring Boot plugin for Maven 
       - name: Build BACK image with Maven
