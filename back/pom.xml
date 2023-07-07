@@ -10,13 +10,13 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>fr.wcs</groupId>
-	<artifactId>impro-spring-back</artifactId>
+	<artifactId>wns-deploy-angular-spring</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
-	<name>impro-spring-back</name>
+	<name>wns-deploy-angular-spring</name>
 	<description>Demo project super useful</description>
 	<properties>
 		<java.version>17</java.version>
-		<image.dockeruser>lgrignon</image.dockeruser>
+		<image.dockeruser></image.dockeruser>
 		<image.name>wns-deploy-angular-spring-back</image.name>
 		<image.tag>latest</image.tag>
 	</properties>
@@ -62,9 +62,9 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<imageName>${image.dockeruser}/${image.name}:${image.tag}</imageName>
+					<!-- define generated docker image name: mydockerusernamespace/wns-deploy-angular-spring-back:[main or dev] -->
+					<imageName>${image.dockeruser}${image.name}:${image.tag}</imageName>
 					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
-
 				</configuration>
 			</plugin>
 		</plugins>
