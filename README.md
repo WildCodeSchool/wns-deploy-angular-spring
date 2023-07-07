@@ -121,6 +121,8 @@ Vous pouvez ensuite tester que l'application marche en accédant à `http://<IP 
 Sinon `http://<IP DE VOTRE SERVER>:8002` pour la préproduction. 
 Le statut de la connexion au back doit être **YES**
 
+⚠️ Il y a un bug volontairement laissé sur le site : l'environnement affiche toujours l'environnement production. Ce bug sera corrigé dans la quête https://odyssey.wildcodeschool.com/quests/2786
+
 ### Troubleshooting / Correction des problèmes
 
 #### GitHub Action
