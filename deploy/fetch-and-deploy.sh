@@ -20,5 +20,8 @@ fi
 
 COMPOSE_FILE=docker-compose.yml
 
+# ensure last version of our docker images are used
+docker compose pull
+
 # start services with a project name of "app_prod" or "app_preprod" 
 docker compose -f "$COMPOSE_FILE" -p "app_$APP_ENV" up --build --force-recreate -d 

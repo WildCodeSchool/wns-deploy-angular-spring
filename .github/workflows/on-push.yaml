@@ -1,4 +1,4 @@
-name: Deploy to preprod
+name: Deployment
 
 on:
   # this job is started after git push on branch "main" or "dev"
