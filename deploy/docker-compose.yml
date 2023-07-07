@@ -1,6 +1,10 @@
 version: "3.5"
 
+# this docker compose file is used for deployment
+
 services:
+
+  # define database container
   db:
     container_name: app_${APP_ENV}_db
     image: postgres:14.1-alpine
@@ -14,9 +18,11 @@ services:
     networks:
       - appinternals
 
+  # define backend container
   back:
     container_name: app_${APP_ENV}_back
     image: ${DOCKER_USER}/wns-deploy-angular-spring-back:${DOCKER_IMAGE_TAG}
+    restart: always
     depends_on:
       - db
     networks:
@@ -24,6 +30,7 @@ services:
         aliases:
           - back
   
+  # define nginx + front container
   nginx:
     container_name: app_${APP_ENV}_front
     image: ${DOCKER_USER}/wns-deploy-angular-spring-front:${DOCKER_IMAGE_TAG}
@@ -40,4 +47,5 @@ volumes:
     driver: local
 networks:
   appinternals:
-    name: appinternals_${GATEWAY_PORT:-8000}
+    # customize the actual network name depending on environment, so "prod" containers do not share network with "preprod" even on same machine / docker server 
+    name: appinternals_${APP_ENV}

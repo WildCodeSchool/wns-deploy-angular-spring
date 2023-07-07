@@ -12,6 +12,7 @@ COPY front .
 RUN npm install
 RUN npx ng build --configuration=production 
 
+# change base image to embed only nginx and front files in resulting docker image
 FROM nginx:1.21.3 as RUN
 
 # copy our nginx configuration to container

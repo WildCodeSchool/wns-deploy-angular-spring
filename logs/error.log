@@ -1,0 +1,10 @@
+2023/07/07 09:40:59 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:00 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:00 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:01 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:02 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:04 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:08 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:14 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:28 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
+2023/07/07 09:41:53 [emerg] 1#1: host not found in upstream "back" in /etc/nginx/nginx.conf:11
