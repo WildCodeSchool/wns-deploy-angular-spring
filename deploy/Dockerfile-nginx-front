@@ -3,6 +3,8 @@
 
 FROM node:18.16.1-alpine as compile
 
+ENV NG_ENV
+
 # create build dirs
 RUN mkdir -p /app/build
 WORKDIR /app/build
@@ -10,7 +12,7 @@ WORKDIR /app/build
 # copy sources and compile front
 COPY front .
 RUN npm install
-RUN npx ng build --configuration=production 
+RUN npx ng build --configuration=$NG_ENV
 
 # change base image to embed only nginx and front files in resulting docker image
 FROM nginx:1.21.3 as RUN
