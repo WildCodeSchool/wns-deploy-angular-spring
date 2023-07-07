@@ -3,7 +3,7 @@
 
 FROM node:18.16.1-alpine as compile
 
-ENV NG_ENV
+#ENV NG_ENV
 
 # create build dirs
 RUN mkdir -p /app/build
