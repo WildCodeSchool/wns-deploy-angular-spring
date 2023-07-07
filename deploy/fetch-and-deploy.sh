@@ -15,7 +15,4 @@ fi
 
 COMPOSE_FILE=docker-compose.yml
 
-docker compose -f $COMPOSE_FILE down && \
-    docker compose -f $COMPOSE_FILE pull && \
-    docker compose -f $COMPOSE_FILE up -d;
-
+docker compose -f "$COMPOSE_FILE" -p "app_$APP_ENV" up --build --force-recreate -d 
