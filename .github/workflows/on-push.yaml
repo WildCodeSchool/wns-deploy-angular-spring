@@ -29,16 +29,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - run: echo "coucouuuu ${{github.ref}}"
-
       # use a specific Dockerfile (deploy/Dockerfile-nginx-front) to build a specific image with a web server (nginx) and compiled front files
-      - name: Build FRONT image PROD
-        if: github.ref == 'refs/heads/main'
-        run: docker build -f ./deploy/Dockerfile-nginx-front --build-arg NG_ENV=production -t ${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring-front:${GITHUB_REF##*/} .
-
-      - name: Build FRONT image PREPROD
-        if: github.ref == 'refs/heads/dev'
-        run: docker build -f ./deploy/Dockerfile-nginx-front --build-arg NG_ENV=production -t ${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring-front:${GITHUB_REF##*/} .
+      - name: Build FRONT image
+        run: docker build -f ./deploy/Dockerfile-nginx-front -t ${{ secrets.DOCKERHUB_USERNAME }}/wns-deploy-angular-spring-front:${GITHUB_REF##*/} .
 
       # build backend image with Spring Boot plugin for Maven 
       - name: Build BACK image with Maven
