@@ -20,5 +20,5 @@ COPY nginx.conf /etc/nginx
 
 # copy compiled files from previous step
 WORKDIR /usr/share/nginx/html
-COPY --from=compile /app/build/dist/front/* ./
+COPY --from=compile /app/build/dist/front/ ./
 
